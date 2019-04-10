@@ -1,0 +1,48 @@
+.btn {
+    background: $ui-highlight;
+    border: 2px solid $ui-highlight;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bolder;
+    line-height: 48px;
+    margin-right: 16px;
+    min-height: 52px;
+    padding: 0 32px;
+    transition: box-shadow 250ms ease-in-out, transform 250ms ease-in-out;
+
+    @media screen and (max-width: 900px) {
+        line-height: 40px;
+        min-height: 44px;
+        padding: 0 24px;
+    }
+
+    @media screen and (max-width: 680px) {
+        font-size: 14px;
+        line-height: 36px;
+        min-height: 40px;
+    }
+
+    @media screen and (max-width: 480px) {
+        margin-right: 0;
+    }
+
+    &:after {
+        display: none;
+    }
+
+    &:hover {
+        @include hover-shadow;
+        background: $ui-highlight;
+    }
+
+    &--secondary {
+        background: transparent;
+        color: $ui-highlight;
+
+        &:hover {
+            background: transparent;
+        }
+    }
+}

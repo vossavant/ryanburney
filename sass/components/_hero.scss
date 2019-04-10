@@ -1,0 +1,120 @@
+.hero {
+    height: $hero-height;
+    position: fixed;
+    width: 100%;
+
+    @media screen and (max-width: 900px) {
+        background: $ui-secondary;
+        height: 64vw;
+    }
+
+    @media screen and (max-width: 480px) {
+        height: 304px;
+    }
+
+    &:after {
+        background: $ui-secondary;
+        bottom: 0;
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 432px;
+        z-index: -1;
+    }
+
+    header {
+        @media screen and (max-width: 480px) {
+            text-align: center;
+
+            + div {
+                justify-content: space-evenly;
+            }
+        }
+    }
+
+    h1 {
+        @media screen and (max-width: 1280px) {
+            font-size: 8vw;
+        }
+
+        @media screen and (max-width: 900px) {
+            text-shadow: 1px 2px 0 $ui-secondary, 4px 4px 0 $ui-light
+        }
+
+        @media screen and (max-width: 680px) {
+            font-size: 56px;
+        }
+
+        @media screen and (max-width: 480px) {
+            font-size: 48px;
+        }
+    }
+
+    > * {
+        width: 100%;
+    }
+
+    &__subheading {
+        font: 36px 'Raleway';
+        margin-top: 0;
+
+        @media screen and (max-width: 1280px) {
+            font-size: 2.75vw;
+        }
+
+        @media screen and (max-width: 900px) {
+            font-size: 19px;
+        }
+
+        @media screen and (max-width: 480px) {
+            font-size: 16px;
+        }
+    }
+
+    .btn--secondary {
+        @media screen and (max-width: 900px) {
+            background: $ui-light;
+        }
+    }
+
+    .inner {
+        background: url('assets/ryan-large.jpg') no-repeat bottom right / contain;
+
+        @media screen and (max-width: 900px) {
+            background: url("assets/ryan-mobile.jpg") no-repeat bottom right -64px/72%;
+            margin-right: 0;
+        }
+
+        @media screen and (max-width: 680px) {
+            background-size: 64%;
+        }
+
+        @media screen and (max-width: 480px) {
+            background-position: bottom center;
+            background-size: 280px;
+            justify-content: space-around;
+            margin: 0 24px;
+
+            &:after {
+                background: transparentize($ui-secondary, 0.2);
+                bottom: 0;
+                content: "";
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            > div {
+                position: relative;
+                z-index: 1;
+            }
+        }
+    }
+
+    // h1 span { display: inline-block; }
+    // h1 span::first-letter {
+    //     border-bottom: 8px solid $ui-highlight;
+    // }
+}

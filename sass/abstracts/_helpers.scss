@@ -1,0 +1,173 @@
+.bg {
+    &--white {
+        background: white;
+    }
+
+    &--light {
+        background: $ui-light;
+    }
+
+    &--medium {
+        background: $ui-medium;
+    }
+
+    &--dark {
+        background: $ui-dark;
+    }
+}
+
+.box-shadow {
+    box-shadow: 0 4px 12px transparentize($ui-dark, 0.8);
+}
+
+.color {
+    &--highlight {
+        color: $ui-highlight;
+    }
+    
+    &--light {
+        color: $ui-light;
+    }
+
+    &--medium {
+        color: $ui-medium;
+    }
+
+    &--secondary {
+        color: $ui-secondary;
+    }
+
+    &--white {
+        color: white;
+    }
+}
+
+
+// spacing
+
+.m {
+    margin: $baseSpace;
+
+    &--tiny {
+        margin: $baseSpace / 2;
+    }
+
+    &--medium {
+        margin: $baseSpace * 2;
+    }
+
+    &--large {
+        margin: $baseSpace * 4;
+    }
+
+    &--huge {
+        margin: $baseSpace * 8;
+    }
+}
+
+.mr {
+    margin-right: $baseSpace;
+}
+
+.mb {
+    margin-bottom: $baseSpace;
+
+    &--tiny {
+        margin-bottom: $baseSpace / 2;
+    }
+
+    &--medium {
+        margin-bottom: $baseSpace * 2;
+    }
+
+    &--large {
+        margin-bottom: $baseSpace * 4;
+
+        @media screen and (max-width: 900px) {
+            margin-bottom: $baseSpace * 2;
+        }
+    }
+
+    &--huge {
+        margin-bottom: $baseSpace * 8;
+    }
+
+    &--none {
+        margin-bottom: 0;
+    }
+}
+
+.p {
+    padding: $baseSpace;
+
+    &--tiny {
+        padding: $baseSpace / 2;
+    }
+
+    &--medium {
+        padding: $baseSpace * 2;
+    }
+
+    &--large {
+        padding: $baseSpace * 4;
+    }
+
+    &--huge {
+        padding: $baseSpace * 8;
+    }
+}
+
+.pv {
+    padding-bottom: $baseSpace;
+    padding-top: $baseSpace;
+
+    &--tiny {
+        padding-bottom: $baseSpace / 2;
+        padding-top: $baseSpace / 2;
+    }
+
+    &--medium {
+        padding-bottom: $baseSpace * 2;
+        padding-top: $baseSpace * 2;
+    }
+
+    &--large {
+        padding-bottom: $baseSpace * 4;
+        padding-top: $baseSpace * 4;
+    }
+
+    &--huge {
+        padding-bottom: $baseSpace * 8;
+        padding-top: $baseSpace * 8;
+
+        @media screen and (max-width: 1100px) {
+            padding-bottom: $baseSpace * 4;
+            padding-top: $baseSpace * 4;
+        }
+
+        // @media screen and (max-width: 680px) {
+        //     padding-bottom: $baseSpace * 2;
+        //     padding-top: $baseSpace * 2;
+        // }
+
+        // @media screen and (max-width: 480px) {
+        //     padding-bottom: $baseSpace * 1.5;
+        //     padding-top: $baseSpace * 1.5;
+        // }
+
+        @media screen and (max-width: 360px) {
+            padding-bottom: $baseSpace * 2;
+            padding-top: $baseSpace * 2;
+        }
+    }
+}
+
+/*
+1400
+1280
+1100
+900
+680
+480
+360
+*/

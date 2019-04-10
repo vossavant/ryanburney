@@ -1,0 +1,82 @@
+main {
+    height: 100%;
+}
+
+.col {
+    &--66 {
+        max-width: 66.667%;
+
+        @media screen and (max-width: 900px) {
+            max-width: none;
+        }
+    }
+}
+
+.content {
+    box-shadow: 0 0 24px transparentize($color: $ui-dark, $amount: 0.8);
+    position: relative;
+    top: $hero-height;
+    z-index: 1;
+
+    @media screen and (max-width: 900px) {
+        top: 64vw;
+    }
+
+    @media screen and (max-width: 480px) {
+        top: 304px;
+    }
+}
+
+.flex {
+    display: flex;
+
+    &--align-i-center {
+        align-items: center;
+    }
+
+    &--justify-space-between {
+        justify-content: space-between;
+    }
+
+    &--wrap {
+        flex-wrap: wrap;
+    }
+
+    &--col-680 {
+        @media screen and (max-width: 680px) {
+            flex-flow: column;
+        }
+    }
+}
+
+.inner {
+    margin: 0 auto;
+    max-width: 1280px;
+
+    @media screen and (max-width: 1400px) {
+        margin: 0 64px;
+    }
+
+    @media screen and (max-width: 1100px) {
+        margin: 0 48px;
+    }
+
+    @media screen and (max-width: 480px) {
+        margin: 0 24px;
+    }
+
+    @media screen and (max-width: 360px) {
+        margin: 0 8px;
+    }
+}
+
+.signature {
+    @media screen and (max-width: 900px) {
+        text-align: left;
+
+        img {
+            margin-left: 0;
+            max-width: 128px;
+        }
+    }
+}

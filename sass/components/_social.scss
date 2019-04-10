@@ -1,0 +1,52 @@
+.social {
+    list-style: none;
+    padding: 0;
+
+    @media screen and (max-width: 680px) {
+        margin-left: 44px;
+    }
+
+    li {
+        display: inline-block;
+        margin-left: 16px;
+    }
+    
+    &__badge {
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: 24px !important;
+        display: inline-block;
+        height: 24px;
+        opacity: 0.64;
+        padding: 16px;
+        text-decoration: none;
+        transition: 250ms opacity ease-in-out, 250ms transform ease-in-out;
+        width: 24px;
+
+        &:hover {
+            background-color: none;
+            opacity: 1;
+            transform: translate(-1px, -1px);
+        }
+
+        &--github {
+            background: url('assets/social/social-github.svg');
+        }
+
+        &--instagram {
+            background: url('assets/social/social-instagram.svg');
+        }
+
+        &--linkedin {
+            background: url('assets/social/social-linkedin.svg');
+        }
+
+        &--medium {
+            background: url('assets/social/social-medium.svg');
+        }
+    }
+
+    &__item {
+        display: inline-block;
+    }
+}
