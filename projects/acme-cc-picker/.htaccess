@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "restricted area"
+AuthUserFile /home/tpxhtyxh7iv3/public_html/projects/acme-cc-picker/.htpasswd
+require valid-user
