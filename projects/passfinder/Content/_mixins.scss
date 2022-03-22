@@ -1,0 +1,11 @@
+//
+//	Vail PassFinder
+//	SASS Mixins
+//
+
+@mixin transition($property){
+	-webkit-transition: $property 0.3s ease-out;
+	-moz-transition: $property 0.3s ease-out;
+	-o-transition: $property 0.3s ease-out;
+	transition: $property 0.3s ease-out;
+}

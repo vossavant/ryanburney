@@ -1,0 +1,77 @@
+﻿@model web.Models.EpicViewModel
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/passfinder.mobile.css")
+    @Styles.Render("~/Content/scrollbar.min.css")
+</head>
+<body>
+    <div id="background" style="background: url('images/mobile-bg@2x.jpg');"></div>
+    <main class="clearfix">
+        <img id="hero-mobile" src="images/mobile-hero.png" />
+
+        <menu>
+            <span class="choose-resort"></span>
+            <span class="choose-days disabled">How Many Days?</span>
+            <span class="choose-other disabled">Do you plan to...</span>
+        </menu>
+
+        <section class="step one">
+            <h1 class="choose-resort" style="background: url('images/mobile-bg@2x.jpg');"></h1>
+            <div class="scrollbox">
+                <div>
+                    @* uncomment this when the resorts no longer need to be hard coded
+                    <div class="hidden" id="list-wrapper"></div>
+                    *@
+
+                    @* client requested resorts in a certain order; hard coding until this functionality can be built into the admin *@
+                    <div id="list-wrapper" data-pev2="PassFinder:Widget:Add_Resorts"><fieldset class="clearfix" data-group="colorado"><legend>Colorado</legend><div class="scrollbox ps-container"><div><label><input data-questions="5" name="Vail" type="checkbox" value="1"><img alt="Vail" src="/../../images/0aa6df47-09f6-4a4a-b2e6-fdfa6944525b_vail.png"> Vail</label><label><input data-questions="5" name="Beaver Creek" type="checkbox" value="2"><img alt="Beaver Creek" src="/../../images/e8fadf73-42d6-4315-88a3-39f7ab50c8df_beaver_creek.png"> Beaver Creek</label><label><input data-questions="" name="Breckenridge" type="checkbox" value="3"><img alt="Breck" src="/../../images/3eedf189-c2d5-4eed-8397-9127e18e1422_breckenridge.png"> Breckenridge</label><label><input data-questions="" name="Keystone" type="checkbox" value="4"><img alt="Keystone" src="/../../images/fe304181-c4c4-490e-8fa7-6d2c504e8f49_keystone.png"> Keystone</label><label><input data-questions="" name="Arapahoe Basin" type="checkbox" value="5"><img alt="Arapahoe Basin" src="/../../images/389cd178-c113-489c-9281-e341a81c1daf_arapahoe_basin.png"> Arapahoe Basin</label></div><div class="ps-scrollbar-x-rail" style="width: 0px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 100px; display: none; right: 3px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></div></fieldset><fieldset class="clearfix" data-group="utah"><legend>Utah</legend><div class="scrollbox ps-container"><div><label><input data-questions="" name="Canyons" type="checkbox" value="6"><img alt="Canyons" src="/../../images/419e9e42-aae3-49c5-8a83-488ead62d5da_canyons.png"> Canyons</label></div><div class="ps-scrollbar-x-rail" style="width: 0px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 100px; display: none; right: 3px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></div></fieldset><fieldset class="clearfix" data-group="lake-tahoe"><legend>Lake Tahoe</legend><div class="scrollbox ps-container"><div><label><input data-questions="4" name="Northstar" type="checkbox" value="7"><img alt="Northstar" src="/../../images/65d4ac3b-3556-4e41-9d0c-6acca3c254a5_northstar.png"> Northstar</label><label><input data-questions="4" name="Kirkwood" type="checkbox" value="8"><img alt="Kirkwood" src="/../../images/25477d46-a3c9-4e1e-b235-d1756b31bd73_kirkwood.png"> Kirkwood</label><label><input data-questions="" name="Heavenly" type="checkbox" value="9"><img alt="Heavenly" src="/../../images/d2d2f519-541d-4f80-86cb-2190d0e479c2_heavenly.png"> Heavenly</label></div><div class="ps-scrollbar-x-rail" style="width: 0px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 100px; display: none; right: 3px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></div></fieldset><fieldset class="clearfix" data-group="michigan"><legend>Michigan</legend><div class="scrollbox ps-container"><div><label><input data-questions="" name="Mt. Brighton" type="checkbox" value="10"><img alt="Mt. Brighton" src="/images/fc9005f5-90aa-4be5-9ed6-7d5d7b99179d_mt_brighton.png"> Mt. Brighton</label></div><div class="ps-scrollbar-x-rail" style="width: 0px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 100px; display: none; right: 3px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></div></fieldset><fieldset class="clearfix" data-group="minnesota"><legend>Minnesota</legend><div class="scrollbox ps-container"><div><label><input data-questions="" name="Afton Alps" type="checkbox" value="11"><img alt="Afton Alps" src="/images/cfcea8ef-fee5-4ff9-b120-501458a8739f_afton_alps.png"> Afton Alps</label></div><div class="ps-scrollbar-x-rail" style="width: 0px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 100px; display: none; right: 3px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></div></fieldset><fieldset class="clearfix" data-group="international"><legend>International</legend><div class="scrollbox ps-container"><div><label><input data-questions="" name="Niseko United, Japan" type="checkbox" value="12"><img alt="Niseko United" src="/images/a5730f80-35eb-402b-8d78-8c16b9700f6f_transparent.png"> Niseko United, Japan</label><label><input data-questions="" name="Verbier, Switzerland" type="checkbox" value="13"><img alt="Verbier, Switzerland" src="/images/3a5680af-5ae5-43d6-b343-8ddebfc946e1_transparent.png"> Verbier, Switzerland</label><label><input data-questions="" name="Les 3 Vallees, France" type="checkbox" value="14"><img alt="Les 3 Vallees, France" src="/images/69665240-ed63-4ad0-8876-cf1aa95d7f93_transparent.png"> Les 3 Vallees, France</label></div><div class="ps-scrollbar-x-rail" style="width: 0px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 100px; display: none; right: 3px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></div></fieldset></div>
+                    @* end: remove this when resorts are no longer hard coded *@
+
+                    <button class="next">Next</button>
+                </div>
+            </div> <!-- // scrollbox -->
+        </section>
+
+        <section class="step two">
+            <h1 class="choose-days" style="background: url('images/mobile-bg@2x.jpg');">How Many Days?</h1>
+            <div class="scrollbox">
+                <div>
+                    <div id="number-wrapper"></div>
+                    <button class="prev">Back</button>
+                    <button class="next">Next</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="step three">
+            <h1 class="choose-other" style="background: url('images/mobile-bg@2x.jpg');">Do You Plan To...</h1>
+            <div class="scrollbox">
+                <div>
+                    <div class="clearfix" id="yesno-wrapper"></div>
+                    <button class="prev">Back</button>
+                    <button class="next">Results</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="step final">
+            <h1>Your Recommended Pass</h1>
+            <div class="scrollbox">
+                <div>
+                    <div id="pass-list"></div>
+                    <button class="prev restart">Start Over</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+    @Scripts.Render("~/Scripts/jquery-ui.min.js")
+    @Scripts.Render("~/Scripts/touchswipe.min.js")
+    @Scripts.Render("~/Scripts/scrollbar.min.js")
+    @Scripts.Render("~/Scripts/passfinder.common.js")
+    @Scripts.Render("~/Scripts/passfinder.mobile.js")

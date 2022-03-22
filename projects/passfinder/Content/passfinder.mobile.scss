@@ -1,0 +1,766 @@
+//
+//	Vail PassFinder
+//	Mobile Stylesheet
+//
+//	Modified: Aug 22, 2014 @ Ryan B / Faction Media
+//
+//	TABLE OF CONTENTS
+//
+//	1.0 	Standard HTML Elements
+//	2.0 	Background Image, Hero Image
+//	3.0 	Home Menu
+//	4.0 	Passfinder Steps
+//	5.0 	Resort Region Picker
+//	  5.1 	  Choose Resort Flyout
+//	6.0 	Number/Toggle Questions
+//	7.0 	Recommended Passes
+//	8.0 	Miscellaneous
+//
+
+@import "mixins", "variables";
+
+
+/** 1.0 - Standard HTML Elements */
+
+a {
+	text-decoration: none;
+}
+
+body {
+	background-size: cover;
+	font-family: "Open Sans", sans-serif;
+	height: 100%;
+	margin: 0;
+	overflow-x: hidden;
+}
+
+button {
+	@include transition(opacity);
+	background: $orange;
+	border: 0;
+	bottom: -62px;
+	color: $white;
+	font: bold 19px "Open Sans", sans-serif;
+	left: 0;
+	line-height: 58px;
+	margin: 0;
+	position: fixed;
+	text-align: center;
+	text-transform: uppercase;
+	width: 100%;
+
+	&:after {
+		content: "\25B6";
+		padding-left: 10px;
+	}
+
+	&[disabled] {
+		opacity: 0.5;
+	}
+
+	&.prev {
+		background: $grayDk;
+
+		&:before {
+			content: "\25C0";
+			padding-right: 10px;
+		}
+
+		&:after {
+			content: "";
+		}
+	}
+}
+
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+}
+
+html {
+	height: 100%;
+}
+
+legend {
+	-moz-box-sizing: border-box;
+		 box-sizing: border-box;
+	width: 100%;
+}
+
+select {
+	background: $white;
+	border: 0;
+	border-radius: 10px;
+	color: #454545;
+	font-size: 34px;
+	height: 45px;
+	margin: 20px 20px 0 0;
+	padding-left: 5px;
+	width: 110px;
+}
+
+
+/** 2.0 - Background Image, Hero Image */
+
+#background {
+	background-size: cover !important;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: -1;
+}
+
+#hero-mobile {
+	display: block;
+	margin: 0 auto 35px;
+}
+
+
+/** 3.0 - Home Menu */
+
+menu {
+	display: none;
+	margin: 0 0 0 20px;
+	padding: 0;
+
+	span {
+		@include transition(all);
+		background: $blue;
+		color: $white;
+		display: block;
+		font-size: 16px;
+		font-weight: bold;
+		line-height: 62px;
+		margin-bottom: 10px;
+		text-transform: uppercase;
+
+		&:before {
+			background: $white;
+			border-radius: 50%;
+			box-shadow: 1px 1px 6px transparentize($black, 0.7);
+			color: $orange;
+			float: left;
+			line-height: 46px;
+			margin: 8px 20px 0 -23px;
+			text-align: center;
+			width: 46px;
+		}
+
+		&.disabled {
+			background: transparentize($white, 0.4);
+			color: $white;
+
+			&:before {
+				color: transparentize($black, 0.8);
+			}
+
+			+ div {
+				display: none;
+			}
+		}
+
+		&.choose-resort:before {
+			content: "1";
+		}
+
+		&.choose-days:before {
+			content: "2";
+		}
+
+		&.choose-other:before {
+			content: "3";
+		}
+	}
+}
+
+
+/** 4.0 - Passfinder Steps */
+
+.step {
+	background: $offwhite;
+	bottom: 0;
+	box-shadow: -1px 0 8px transparentize($black, 0.25);
+	display: none;
+	left: 102%;
+	padding: 130px 0 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+
+	> div {
+		background: $offwhite;
+	}
+
+	button {
+		box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+		width: 50%;
+
+		&:only-of-type {
+			width: 100%;
+		}
+
+		& + button {
+			left: auto;
+			right: 0;
+		}
+	}
+
+	h1 {
+		background-position: left 75% !important; // this is a half measure that may not work for all images
+		background-size: cover !important;
+		box-shadow: 0 1px 6px transparentize($black, 0.3);
+		-moz-box-sizing: border-box;
+			 box-sizing: border-box;
+		color: $white;
+		font-size: 22px;
+		left: 0;
+		height: 130px;
+		padding-top: 30px;
+		position: absolute;
+		text-shadow: 1px 1px 5px transparentize($blue, 0.5);
+		top: 0;
+		width: 100%;
+		z-index: 1;
+
+		&:before {
+			background: $white;
+			border-radius: 50%;
+			box-shadow: 1px 1px 6px transparentize($black, 0.7);
+			color: $orange;
+			float: left;
+			line-height: 46px;
+			margin: -6px 20px 0;
+			text-align: center;
+			text-shadow: none;
+			width: 46px;
+		}
+
+		& + div {
+			display: none;
+		}
+
+		&.fixed {
+			position: fixed;
+		}
+	}
+
+	&.one {
+		h1:before {
+			content: "1";
+		}
+	}
+
+	&.two {
+		padding-bottom: 60px;
+		z-index: 2;
+
+		h1:before {
+			content: "2";
+		}
+	}
+
+	&.three {
+		padding-bottom: 60px;
+		z-index: 3;
+
+		h1:before {
+			content: "3";
+		}
+	}
+
+	&.final {
+		padding: 46px 0 60px;
+		z-index: 10;
+
+		h1 {
+			background: #cfcfcf;
+			color: $blue;
+			font-size: 20px;
+			height: 46px;
+			line-height: 46px;
+			padding: 0;
+			text-align: center;
+			text-shadow: none;
+			text-transform: uppercase;
+			z-index: 1;
+		}
+	}
+
+	// transition overlay
+	.overlay {
+		background: transparentize($white, 0.25);
+		bottom: 0;
+		display: none;
+		left: 0;
+		margin: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
+
+
+main {
+	-moz-box-sizing: border-box;
+		 box-sizing: border-box;
+	display: block;
+	margin: 0 auto;
+	padding: 20px;
+
+	#seasonal-text {
+		display: none;
+	}
+}
+
+
+/** 5.0 - Resort Region Picker */
+
+#list-wrapper {
+
+	fieldset {
+		&:last-child legend {
+			border: 0;
+		}
+
+		&.selected legend {
+			background: $white;
+			color: $blue;
+			position: relative;
+
+			&:after {
+				background: url('../images/check.png');
+				content: "";
+				height: 14px;
+				position: absolute;
+				right: 25px;
+				top: 23px;
+				width: 19px;
+			}
+		}
+	}
+
+	img {
+		opacity: 0.5;
+		width: 24px;
+	}
+
+	label {
+		display: none;
+	}
+
+	legend {
+		border-bottom: 1px solid #afafaf;
+		color: #898989;
+		font-size: 21px;
+		font-weight: bold;
+		line-height: 60px;
+		padding-left: 20px;
+		text-transform: uppercase;
+	}
+
+	.scrollbox {
+		display: none;
+	}
+}
+
+
+/** 5.1 - Choose Resort Flyout */
+
+.flyout {
+	background: $white;
+	box-shadow: 1px 0 8px transparentize($black, 0.25);
+	bottom: 0;
+	left: -92%;
+	padding-top: 80px;
+	position: absolute;
+	top: 0;
+	width: 90%;
+	z-index: 9;
+
+	> * {
+		opacity: 0;
+	}
+
+	button {
+		position: static;
+
+		&:after {
+			display: none;
+		}
+	}
+
+	img {
+		margin: -1px 6px 0 -35px;
+		opacity: 0.5;
+		vertical-align: middle;
+		width: 24px;
+	}
+
+	input {
+		display: none;
+	}
+
+	label {
+		background: #ededed;
+		border-bottom: 1px solid #afafaf;
+		-moz-box-sizing: border-box;
+			 box-sizing: border-box;
+		color: #898989;
+		display: block;
+		font-size: 20px;
+		min-height: 70px;
+		padding: 20px 50px 20px 60px;
+		text-transform: uppercase;
+
+		&.selected {
+			background: $white;
+			color: #141414;
+			position: relative;
+
+			&:after {
+				background: url('../images/check.png');
+				content: "";
+				height: 14px;
+				position: absolute;
+				right: 25px;
+				top: 28px;
+				width: 19px;
+			}
+
+			img {
+				opacity: 1;
+			}
+		}
+	}
+
+	legend {
+		background: $white;
+		border-bottom: 1px solid #afafaf;
+		color: $blue;
+		font-size: 20px;
+		font-weight: bold;
+		height: 80px;
+		left: 0;
+		overflow: hidden;
+		padding: 25px;
+		position: absolute;
+		text-overflow: ellipsis;
+		text-transform: uppercase;
+		top: 0;
+		white-space: nowrap;
+		z-index: 1;
+	}
+
+	.btn-wrap {
+		padding: 25px;
+	}
+
+	.scrollbox {
+		display: block !important;
+	}
+}
+
+
+/** 6.0 - Number/Toggle Questions */
+
+#number-wrapper .question p {
+	width: auto;
+}
+
+.question {
+	@include transition(all);
+	border-bottom: 1px solid #afafaf;
+	padding: 20px;
+
+	&:only-of-type,
+	&:last-of-type {
+		border: 0;
+	}
+
+	p {
+		color: #888;
+		float: left;
+		font-size: 18px;
+		font-weight: bold;
+		margin: 0;
+		width: 66%;
+	}
+
+	.day-count {
+		color: #0e1529;
+		font-size: 24px;
+	}
+
+	&.yes {
+		background: $white;
+			color: $blue;
+
+		p {
+			color: $blue;
+		}
+
+		.toggle-inner {
+			margin-left: 0;
+		}
+	}
+
+	.toggle {
+		-moz-box-sizing: border-box;
+			 box-sizing: border-box;
+		border: 2px solid #b0b0b0;
+		border-radius: 30px;
+		float: right;
+		height: 33px;
+		margin: 20px 0 0;
+		overflow: hidden;
+		width: 2 * $mobileToggleWidth - 4;
+
+		span {
+			color: $white;
+			cursor: pointer;
+			float: left;
+			font-size: 0;
+			font-weight: bold;
+			height: 30px;
+			text-align: center;
+			text-transform: uppercase;
+			width: $mobileToggleWidth;
+
+			&:first-child {
+				background: $orange;
+				margin-right: -12px;
+				padding-left: 12px;
+			}
+		}
+
+		.switch {
+			background: url('../images/grip-mobile.png');
+			height: $mobileToggleWidth;
+			margin: -4px 0 0 -4px;
+			width: $mobileToggleWidth;
+		}
+	}
+
+	.toggle-inner {
+		@include transition(all);
+		margin-left: -$mobileToggleWidth;
+		width: 3 * $mobileToggleWidth;
+	}
+}
+
+
+/** 7.0 - Recommended Passes */
+
+#pass-list {
+	display: block !important;
+
+	> h2 {
+		background: #cfcfcf;
+		border-bottom: 1px solid #afafaf;
+		color: $blue;
+		font-size: 20px;
+		line-height: 46px;
+		text-align: center;
+		text-transform: uppercase;
+		z-index: 1;
+	}
+}
+
+article {
+	background: $grayLt;
+	border-bottom: 1px solid #afafaf;
+	width: 100%;
+
+	// recommended pass
+
+	&:first-of-type {
+		background: $white;
+
+		> div {
+			display: block;
+			opacity: 1;
+			padding-top: 0;
+
+			img {
+				float: right;
+				margin: 0 0 30px 30px;
+			}
+		}
+
+		h2 {
+			background: none;
+			margin-top: 0;
+		}
+
+		h2 span {
+			display: none;
+		}
+
+		img {
+			display: block;
+			margin: 20px auto;
+		}
+	}
+
+	&:last-of-type {
+		border: 0;
+	}
+
+	&.open h2 span a {
+		-webkit-transform: rotate(180deg);
+			-ms-transform: rotate(180deg);
+				transform: rotate(180deg);
+	}
+
+
+	// additional passes & general pass styles
+
+	> div {
+		display: none;
+		opacity: 0;
+		padding: 20px;
+
+		img {
+			border-radius: 10px;
+			box-shadow: 0 0 10px transparentize($black, 0.5);
+			float: right;
+			margin: 0 0 20px 30px;
+			-webkit-transform: rotate(5deg);
+					transform: rotate(5deg);
+			width: 90px;
+		}
+	}
+
+	a {
+		@include transition(background);
+		background: $orange;
+		box-shadow: 0 0 5px transparentize($black, 0.7);
+		clear: right;
+		color: $white;
+		float: right;
+		font-weight: bold;
+		line-height: 40px;
+		text-align: center;
+		text-transform: uppercase;
+		width: 120px;
+
+		// hide "Buy Now" button on tickets without any purchase URLs
+		&[href="undefined"] {
+			display: none;
+		}
+	}
+
+	h2 {
+		@include transition(background);
+		background: $grayLt;
+		font-size: 0;
+		margin: 20px;
+
+		img {
+			margin: 0 0 7px;
+			max-height: 25px;
+		}
+
+		span {
+			color: $blueDk;
+			display: block;
+			font-size: 18px;
+
+			a {
+				@include transition(transform);
+				background: url('../images/arrow-disc.png');
+				box-shadow: none;
+				font-size: 0;
+				height: 0;
+				padding: 26px 0 0;
+				width: 26px;
+			}
+
+			a:hover {
+				background: url('../images/arrow-disc.png');
+			}
+
+			span {
+				display: inline-block;
+				position: static;
+			}
+		}
+	}
+
+	h3 {
+		font-size: 16px;
+		line-height: 20px;
+		text-transform: uppercase;
+
+		p {
+			margin: 0;
+		}
+	}
+
+	p {
+		color: $grayDk;
+	}
+
+	
+	// price and per diem price
+
+	.price {
+		float: left;
+		font-size: 26px;
+		font-weight: bold;
+
+		.perdiem {
+			font-size: 20px;
+			font-weight: normal;
+
+			&:before {
+				content: "=";
+				padding: 0 5px;
+			}
+
+			small {
+				font-size: 16px;
+			}
+		}
+	}
+}
+
+
+/** 8.0 - Miscellaneous */
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.hidden {
+	display: none;
+}
+
+.scrollbox {
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+#seasonal-text {
+	color: #888;
+	display: block !important;
+	font-size: 14px;
+	margin: 20px;
+}

@@ -1,0 +1,40 @@
+﻿@model web.Models.EpicViewModel
+
+<!DOCTYPE html>
+<html>
+
+@{
+    Layout = null; // not using _Layout.cshtml
+}
+
+@if (Request.Browser.IsMobileDevice)
+{
+    Html.RenderPartial("_Mobile", Model);
+}
+else
+{
+    Html.RenderPartial("_Desktop", Model);
+}
+
+    <script type="text/javascript">
+        var isMobile;
+        var @Model.ResortsVar   = '@Html.Raw(Model.ResortsData)';
+        var @Model.PassesVar    = '@Html.Raw(Model.PassesData)';
+        var @Model.QuestionsVar = '@Html.Raw(Model.QuestionsData)';
+        var heroImageSrc        = '@Html.Raw(Model.HeroImagePath)';
+        var heroImageAlt        = '@Html.Raw(Model.HeroImageAlt)';
+        var placeholderImageSrc = '@Html.Raw(Model.PlaceholderImagePath)';
+        var placeholderImageAlt = '@Html.Raw(Model.PlaceholderImageAlt)';
+        var seasonalText        = '@Html.Raw(Model.SeasonalText)';
+    </script>
+
+    <!-- SiteCatalyst code version: H.16. Copyright 1997-2008 Omniture, Inc. More info available at http://www.omniture.com -->
+    <script src="https://www.snow.com/vailresorts/sites/global/assets/js/tagging/s_code.js"></script>
+    <script>//<![CDATA[
+     s.pageName="snow:epic-pass:Pass Finder:iframe";
+     s.prop50 = "vriepicpass"; //Omniture Report Suite ID
+     s.linkTrackVars = 'prop50';
+    jQuery(window).load( function() { s.t(); } )
+    //]]></script>
+</body>
+</html>

@@ -1,0 +1,675 @@
+//
+//	Vail PassFinder
+//	Master Stylesheet
+//
+//	Modified: Aug 24, 2014 @ Ryan B / Faction Media
+//
+//	TABLE OF CONTENTS
+//
+//	1.0 	Standard HTML Elements
+//	2.0 	Structure
+//	  2.1 	  Main Content Region
+//	  2.2 	  Sidebar
+//	3.0 	Sidebar Widgets
+//	  3.1 	  Resort Picker
+//	  3.2 	  Slider (Select Days)
+//	4.0 	Passes
+//	5.0 	Miscellaneous
+//	6.0 	Responsive
+//	  6.1 	  max-width: 800px
+//	  6.2 	  max-width: 700px
+//	  6.3 	  max-width: 640px
+//	  6.4 	  max-width: 480px
+//
+
+@import "mixins", "variables";
+
+
+/** Standard HTML Elements */
+
+a {
+	text-decoration: none;
+}
+
+body {
+	background-size: cover;
+	font-family: "Open Sans", sans-serif;
+	margin: 0;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+}
+
+
+/** 2.0 - Structure */
+
+// Main Content Region
+
+main {
+	background: $white;
+	-moz-box-sizing: border-box;
+		 box-sizing: border-box;
+	display: block;
+	margin: 0 auto;
+	padding: 0 30px 30px;
+	width: 810px;
+
+	> h1 {
+		display: none;
+	}
+
+	> section {
+		float: right;
+		margin-top: 20px;
+		position: relative;
+		width: 60%;
+
+		> h1,
+		#pass-list > h2 {
+			color: #b2b2b2;
+			font-size: 20px;
+			letter-spacing: 1px;
+			margin: 0 0 15px;
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		#pass-list > h2 {
+			font-size: 16px;
+			text-align: left;
+		}
+	}
+
+	#pass-list {
+		display: none;
+	}
+
+	#seasonal-text {
+		display: none;
+		font-size: smaller;
+		font-weight: normal;
+		margin: 20px 0 0;
+	}
+}
+
+
+// Sidebar
+
+aside {
+	float: left;
+	margin-right: 50px;
+	width: 33%;
+
+	> div {
+		background: $offwhite;
+		color: $grayDk;
+		padding: 10px;
+	}
+
+	h3 {
+		@include transition(all);
+		background: $blue;
+		box-shadow: 0 1px 4px transparentize($black, 0.7);
+		color: $white;
+		font-size: 14px;
+		line-height: 48px;
+		margin-top: 20px;
+		position: relative;
+		text-transform: uppercase;
+
+		&:before {
+			background: $white;
+			background: #eee\9;
+			border: 1px solid #ccc\9;
+			border-radius: 50%;
+			box-shadow: 1px 1px 6px transparentize($black, 0.7);
+			color: $orange;
+			float: left;
+			line-height: 36px;
+			margin: 6px 20px 0 -18px;
+			text-align: center;
+			width: 36px;
+		}
+
+		&.disabled {
+			background: $white;
+			background: #f0f0f0\9;
+			color: transparentize($black, 0.8);
+			color: #ccc\9;
+
+			&:before {
+				color: transparentize($black, 0.8);
+				color: #ccc\9;
+			}
+
+			+ div {
+				display: none;
+			}
+		}
+
+		&.choose-resort {
+			cursor: pointer;
+
+			&:after {
+				@include transition(all);
+				background: url('../images/arrow.png');
+				content: "";
+				height: 7px;
+				position: absolute;
+				right: 10px;
+				top: 21px;
+				width: 14px;
+			}
+
+			&:before {
+				content: "1";
+			}
+
+			&.open:after {
+				-webkit-transform: rotate(180deg);
+					-ms-transform: rotate(180deg);
+						transform: rotate(180deg);
+			}
+		}
+
+		&.choose-days:before {
+			content: "2";
+		}
+
+		&.choose-other:before {
+			content: "3";
+		}
+	}
+
+	p {
+		clear: both;
+		font-size: 14px;
+		font-weight: bold;
+		margin: 0;
+	}
+
+	small {
+		display: block;
+	}
+
+	.question.yes .toggle-inner {
+		margin-left: 0;
+	}
+
+	.toggle {
+		border-radius: 5px;
+		float: left;
+		line-height: 30px;
+		margin: 10px 0 10px 15px;
+		overflow: hidden;
+		width: 2 * $toggleWidth;
+
+		span {
+			background: $orange;
+			color: $white;
+			cursor: pointer;
+			float: left;
+			font-size: 14px;
+			font-weight: bold;
+			text-align: center;
+			text-transform: uppercase;
+			width: $toggleWidth;
+
+			&:last-child {
+				background: #9fa1a4;
+				color: #e1e1e1;
+			}
+		}
+
+		.switch {
+			background: url('../images/grip.png');
+			height: 30px;
+			width: $toggleWidth;
+		}
+
+		// for IE8
+		.switch + span {
+			background: #9fa1a4;
+			color: #e1e1e1;
+		}
+	}
+
+	.toggle-inner {
+		@include transition(all);
+		margin-left: -$toggleWidth;
+		width: 3 * $toggleWidth;
+	}
+}
+
+
+/** 3.0 - Sidebar Widgets */
+
+// Resort Picker
+
+.scrollbox {
+	overflow: hidden;
+	position: relative;
+
+	&.resort {
+		display: none;
+		height: 325px;
+		padding: 0;
+	}
+}
+
+#list-wrapper {
+	fieldset {
+		border: 0;
+		display: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	img {
+		left: 40px;
+		opacity: 0.5;
+		position: absolute;
+		top: 5px;
+		width: 24px;
+	}
+
+	input {
+		margin: 0 35px 0 0;
+	}
+
+	label {
+		background-position: 40px center !important;
+		background-repeat: no-repeat !important;
+		border-bottom: 1px solid #d6d7d8;
+		color: #0e1529;
+		display: block;
+		font-size: 14px;
+		line-height: 36px;
+		padding-left: 20px;
+		position: relative;
+
+		&:last-child {
+			border: 0;
+		}
+	}
+
+	legend {
+		background: #d5d7d8;
+		-moz-box-sizing: border-box;
+			 box-sizing: border-box;
+		color: $blue;
+		font-size: 14px;
+		line-height: 27px;
+		padding-left: 20px;
+		text-transform: uppercase;
+		width: 100%;
+	}
+}
+
+
+// Slider (Select Days)
+
+.ui-slider-horizontal {
+	background: #cbccce url('../images/slider.png') right center no-repeat;
+	float: left;
+	height: 10px;
+	margin: 30px 12px 10px;
+	position: relative;
+	width: 155px;
+}
+
+.ui-slider-range {
+	background: $orange;
+	height: 10px;
+}
+
+.ui-slider .ui-slider-handle {
+	background: url('../images/grip-slider.png');
+	cursor: pointer;
+	height: 18px;
+	margin-left: -12px;
+	position: absolute;
+	top: -4px;
+	-ms-touch-action: none;
+		touch-action: none;
+	width: 25px;
+}
+
+#day-count {
+	float: right;
+	margin: 14px 0 0;
+	text-align: center;
+
+	p {
+		background: $white;
+		color: $grayDk;
+		font-size: 26px;
+		line-height: 38px;
+		width: 38px;
+	}
+
+	span {
+		font-size: 12px;
+		text-transform: uppercase;
+	}
+}
+
+
+/** 4.0 - Passes */
+
+article {
+	border: 1px solid #ccc\9;
+	box-shadow: 0 2px 2px transparentize($black, 0.89);
+	margin-bottom: 5px;
+	width: 100%;
+
+	&:first-of-type {
+		box-shadow: 0 0 9px transparentize($black, 0.89);
+		margin-bottom: 20px;
+
+		> div {
+			display: block;
+			opacity: 1;
+		}
+
+		h2 {
+			cursor: default;
+
+			img {
+				display: block;
+				margin: 0 auto;
+				padding: 0 0 7px;
+			}
+
+			span {
+				display: none;
+			}
+		}
+	}
+
+	&.open h2 span a {
+		-webkit-transform: rotate(180deg);
+			-ms-transform: rotate(180deg);
+				transform: rotate(180deg);
+	}
+
+	a {
+		@include transition(background);
+		background: $orange;
+		box-shadow: 0 0 5px transparentize($black, 0.7);
+		color: $white;
+		float: right;
+		font-weight: bold;
+		line-height: 36px;
+		text-align: center;
+		text-transform: uppercase;
+		width: 110px;
+
+		&:hover {
+			background: darken($orange, 10%);
+		}
+
+		// hide "Buy Now" button on tickets without any purchase URLs
+		&[href="undefined"] {
+			display: none;
+		}
+	}
+
+	> div {
+		display: none;
+		opacity: 0;
+		padding: 0 20px 20px 0;
+
+		div {
+			padding-left: 170px;
+		}
+
+		img {
+			border-radius: 10px;
+			box-shadow: 0 0 10px transparentize($black, 0.5);
+			float: left;
+			margin: 20px 0 0 -25px;
+			-webkit-transform: rotate(-5deg);
+					transform: rotate(-5deg);
+			width: 175px;
+		}
+	}
+
+	h2 {
+		@include transition(background);
+		background: $grayLt;
+		box-shadow: 0 2px 2px transparentize($black, 0.89);
+		cursor: pointer;
+		font-size: 0;
+		height: 48px;
+		line-height: 16px;
+		position: relative;
+
+		img {
+			margin: 16px 0 0 10px;
+			max-height: 25px;
+		}
+
+		span {
+			color: $blueDk;
+			font-size: 18px;
+			line-height: 50px;
+			position: absolute;
+			right: 10px;
+			top: 0;
+
+			a {
+				@include transition(transform);
+				background: url('../images/arrow-disc.png');
+				box-shadow: none;
+				font-size: 0;
+				height: 0;
+				margin: 12px 0 0 20px;
+				padding: 26px 0 0;
+				width: 26px;
+			}
+
+			a:hover {
+				background: url('../images/arrow-disc.png');
+			}
+
+			span {
+				position: static;
+			}
+		}
+	}
+
+	h3 {
+		color: $green;
+		margin-top: 20px;
+		text-transform: uppercase;
+	}
+
+	p {
+		color: $grayDk;
+		margin: 0.5em 0 1em;
+	}
+
+	.price {
+		float: left;
+		font-size: 26px;
+		font-weight: bold;
+		width: 150px;
+
+		.perdiem {
+			display: block;
+			font-size: 16px;
+			font-weight: normal;
+
+			small {
+				font-size: 16px;
+			}
+		}
+	}
+}
+
+
+/** 5.0 - Miscellaneous */
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.hidden {
+	display: none;
+}
+
+.loading {
+	background: transparentize($white, 0.2) url('../images/loader.gif') center no-repeat;
+	display: none;
+	height: 400px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+}
+
+.transparent {
+	opacity: 0;
+}
+
+
+/** 6.0 - Responsive */
+
+// Misc Breakpoint
+
+@media screen and (max-width: 800px) {
+    aside {
+		margin-right: 10px;
+		width: 200px;
+	}
+
+	article {
+		> div img {
+			margin: 20px 0 0 0px;
+			width: 145px;
+		}
+
+		h2 img {
+			width: auto;
+		}
+	}
+
+	img {
+		width: 100%;
+	}
+
+	main {
+		width: 100%;
+		
+		> section {
+			width: 64%;
+		}
+	}
+}
+
+
+// Misc Breakpoint
+
+@media screen and (max-width: 700px) {
+	main > section {
+		width: 60%;
+	}
+
+	article {
+		> div img {
+			margin: 20px 0 0 0px;
+			width: 105px;
+		}
+	
+		> div div {
+			padding-left: 126px;
+		}
+	
+		h2 span a {
+			margin: 12px 0 0 10px;
+		}
+	}
+}
+
+
+// Small Tablet
+
+@media screen and (max-width: 640px) {
+	main > section {
+		width: 100%;
+	}
+	aside {
+		margin-right: 10px;
+		width: 100%;
+	}
+}
+
+
+// Large Phone
+
+@media screen and (max-width: 480px) {
+	article {
+		a {
+			line-height: 45px;
+			width: 130px;
+		}
+
+		> div {
+			div {
+				padding-left: 20px;
+			}
+
+			img {
+				display: block;
+				float: none;
+				margin: 20px auto 0;
+				width: 145px;
+			}
+		}
+
+		h2 {
+			height: auto;
+
+			img {
+				display: block;
+				margin: 0 auto;
+			}
+
+			span {
+				display: block;
+				margin: 0 auto;
+				position: static;
+				width: 100px;
+
+				a {
+					margin: 12px auto;
+				}
+
+				span {
+					display: inline-block;
+					font-size: 24px;
+					width: auto;
+				}
+			}
+		}
+
+		.price .perdiem {
+			display: inline;
+
+			&:before {
+				content: "=";
+				padding: 0 5px;
+			}
+		}
+	}
+}

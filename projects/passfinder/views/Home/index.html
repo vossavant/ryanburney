@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="../../Content/passfinder.css">
+    <link rel="stylesheet" href="../../Content/scrollbar.min.css">
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <main class="clearfix">
+        <div id="hero"></div>
+
+        <aside>
+            <h3 class="choose-resort"></h3>
+
+            <div class="resort scrollbox">
+                <div id="list-wrapper" data-pev2="PassFinder:Widget:Add_Resorts">
+                    <fieldset data-group="colorado">
+                        <legend>Colorado</legend>
+                        <label>
+                            <input data-questions="5" name="Vail" type="checkbox" value="1">
+                            <img alt="Vail" src="/images/0aa6df47-09f6-4a4a-b2e6-fdfa6944525b_vail.png"> Vail
+                        </label>
+                        <label>
+                            <input data-questions="5" name="Beaver Creek" type="checkbox" value="2">
+                            <img alt="Beaver Creek" src="/images/e8fadf73-42d6-4315-88a3-39f7ab50c8df_beaver_creek.png"> Beaver Creek
+                        </label>
+                        <label>
+                            <input data-questions="" name="Breckenridge" type="checkbox" value="3">
+                            <img alt="Breck" src="/images/3eedf189-c2d5-4eed-8397-9127e18e1422_breckenridge.png"> Breckenridge
+                        </label>
+                        <label>
+                            <input data-questions="" name="Keystone" type="checkbox" value="4">
+                            <img alt="Keystone" src="/images/fe304181-c4c4-490e-8fa7-6d2c504e8f49_keystone.png"> Keystone
+                        </label>
+                        <label>
+                            <input data-questions="" name="Arapahoe Basin" type="checkbox" value="5">
+                            <img alt="Arapahoe Basin" src="/images/389cd178-c113-489c-9281-e341a81c1daf_arapahoe_basin.png"> Arapahoe Basin
+                        </label>
+                    </fieldset>
+
+                    <fieldset data-group="utah">
+                        <legend>Utah</legend>
+                        <label>
+                            <input data-questions="" name="Canyons" type="checkbox" value="6">
+                            <img alt="Canyons" src="/images/419e9e42-aae3-49c5-8a83-488ead62d5da_canyons.png"> Canyons
+                        </label>
+                    </fieldset>
+
+                    <fieldset data-group="lake-tahoe">
+                        <legend>Lake Tahoe</legend>
+                        <label>
+                            <input data-questions="" name="Heavenly" type="checkbox" value="9">
+                            <img alt="Heavenly" src="/images/d2d2f519-541d-4f80-86cb-2190d0e479c2_heavenly.png"> Heavenly
+                        </label>
+                        <label>
+                            <input data-questions="4" name="Northstar" type="checkbox" value="7">
+                            <img alt="Northstar" src="/images/65d4ac3b-3556-4e41-9d0c-6acca3c254a5_northstar.png"> Northstar
+                        </label>
+                        <label>
+                            <input data-questions="4" name="Kirkwood" type="checkbox" value="8">
+                            <img alt="Kirkwood" src="/images/25477d46-a3c9-4e1e-b235-d1756b31bd73_kirkwood.png"> Kirkwood
+                        </label>
+                    </fieldset>
+
+                    <fieldset data-group="minnesota">
+                        <legend>Minnesota</legend>
+                        <label>
+                            <input data-questions="" name="Afton Alps" type="checkbox" value="11">
+                            <img alt="Afton Alps" src="/images/cfcea8ef-fee5-4ff9-b120-501458a8739f_afton_alps.png"> Afton Alps
+                        </label>
+                    </fieldset>
+
+                    <fieldset data-group="michigan">
+                        <legend>Michigan</legend>
+                        <label>
+                            <input data-questions="" name="Mt. Brighton" type="checkbox" value="10">
+                            <img alt="Mt. Brighton" src="/images/fc9005f5-90aa-4be5-9ed6-7d5d7b99179d_mt_brighton.png"> Mt. Brighton
+                        </label>
+                    </fieldset>
+                    
+                    <fieldset data-group="international">
+                        <legend>International</legend>
+                        <label>
+                            <input data-questions="" name="Niseko United, Japan" type="checkbox" value="12">
+                            <img alt="Niseko United" src="/images/a5730f80-35eb-402b-8d78-8c16b9700f6f_transparent.png"> Niseko United, Japan
+                        </label>
+                        <label>
+                            <input data-questions="" name="Verbier, Switzerland" type="checkbox" value="13">
+                            <img alt="Verbier, Switzerland" src="/images/3a5680af-5ae5-43d6-b343-8ddebfc946e1_transparent.png"> Verbier, Switzerland
+                        </label>
+                        <label>
+                            <input data-questions="" name="Les 3 Vallees, France" type="checkbox" value="14">
+                            <img alt="Les 3 Vallees, France" src="/images/69665240-ed63-4ad0-8876-cf1aa95d7f93_transparent.png"> Les 3 Vallees, France
+                        </label>
+                    </fieldset>
+                </div>
+            </div>
+
+            <h3 class="choose-days disabled">How Many Days?</h3>
+            <div class="clearfix hidden" id="number-wrapper">
+                <div class="transparent"></div>
+            </div>
+
+            <h3 class="choose-other disabled">Do you plan to...</h3>
+            <div class="clearfix hidden" id="yesno-wrapper">
+                <div class="transparent"></div>
+            </div>
+        </aside>
+
+        <section>
+            <div id="placeholder"></div>
+            <h1 class="hidden">Your Recommended Pass</h1>
+            <div class="loading"></div>
+            <div id="pass-list"></div>
+        </section>
+    </main>
+
+
+    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../../Scripts/jquery-ui.min.js"></script>
+    <script src="../../Scripts/scrollbar.min.js"></script>
+    <script src="../../Scripts/passfinder.common.js"></script>
+    <script src="../../Scripts/passfinder.desktop.js"></script>
+
+    <script type="text/javascript">
+        var isMobile;
+        var r   = '[{"i":1,"g":"Colorado","n":"Vail","f":"/images/0aa6df47-09f6-4a4a-b2e6-fdfa6944525b_vail.png","a":"Vail","q":[5]},{"i":2,"g":"Colorado","n":"Beaver Creek","f":"/images/e8fadf73-42d6-4315-88a3-39f7ab50c8df_beaver_creek.png","a":"Beaver Creek","q":[5]},{"i":3,"g":"Colorado","n":"Breckenridge","f":"/images/3eedf189-c2d5-4eed-8397-9127e18e1422_breckenridge.png","a":"Breck","q":[]},{"i":4,"g":"Colorado","n":"Keystone","f":"/images/fe304181-c4c4-490e-8fa7-6d2c504e8f49_keystone.png","a":"Keystone","q":[]},{"i":5,"g":"Colorado","n":"Arapahoe Basin","f":"/images/389cd178-c113-489c-9281-e341a81c1daf_arapahoe_basin.png","a":"Arapahoe Basin","q":[]},{"i":6,"g":"Utah","n":"Canyons","f":"/images/419e9e42-aae3-49c5-8a83-488ead62d5da_canyons.png","a":"Canyons","q":[]},{"i":7,"g":"Lake Tahoe","n":"Northstar","f":"/images/65d4ac3b-3556-4e41-9d0c-6acca3c254a5_northstar.png","a":"Northstar","q":[4]},{"i":8,"g":"Lake Tahoe","n":"Kirkwood","f":"/images/25477d46-a3c9-4e1e-b235-d1756b31bd73_kirkwood.png","a":"Kirkwood","q":[4]},{"i":9,"g":"Lake Tahoe","n":"Heavenly","f":"/images/d2d2f519-541d-4f80-86cb-2190d0e479c2_heavenly.png","a":"Heavenly","q":[]},{"i":10,"g":"Michigan","n":"Mt. Brighton","f":"/images/fc9005f5-90aa-4be5-9ed6-7d5d7b99179d_mt_brighton.png","a":"Mt. Brighton","q":[]},{"i":11,"g":"Minnesota","n":"Afton Alps","f":"/images/cfcea8ef-fee5-4ff9-b120-501458a8739f_afton_alps.png","a":"Afton Alps","q":[]},{"i":12,"g":"International","n":"Niseko United, Japan","f":"/images/a5730f80-35eb-402b-8d78-8c16b9700f6f_transparent.png","a":"Niseko United","q":[]},{"i":13,"g":"International","n":"Verbier, Switzerland","f":"/images/3a5680af-5ae5-43d6-b343-8ddebfc946e1_transparent.png","a":"Verbier, Switzerland","q":[]},{"i":14,"g":"International","n":"Les 3 Vallees, France","f":"/images/69665240-ed63-4ad0-8876-cf1aa95d7f93_transparent.png","a":"Les 3 Vallees, France","q":[]}]';
+        var p    = '[{"i":1,"n":"Daily Lift Ticket","s":"<p>SINGLE LIFT TICKET</p>","d":"<p>Daily Lift Ticket</p>","p":139.0000,"hp":"/images/cb89de14-6fb3-4906-a531-86116cbb521c_daily_lift_ticket.png","ha":"Daily Lift Ticket","ip":"/images/b8d0ba4e-7689-4225-879f-52aef9f0ca0e_daily_lift_ticket_pass.png","ia":"Daily Lift Ticket","w":65,"r":[{"w":-1000,"c":[{"q":2,"op":"GT","val":"3"}]},{"w":-15,"c":[{"q":2,"op":"EQ","val":"3"}]}]},{"i":2,"n":"Epic Pass","s":"<p><strong>SKI AS MUCH AS YOU WANT, WHENEVER YOU WANT</strong></p>","d":"<p>Unlimited, unrestricted skiing or riding at Vail, Beaver Creek, Breckenridge, Keystone, Canyons, Heavenly, Northstar, Kirkwood, Afton Alps, Mt. Brighton, and Arapahoe Basin. NO BLACKOUT DATES. Now includes 5 consecutive days at Niseko United in Japan and up to 5 consecutive days at Verbier in Switzerland and 3 Vallees in France when staying in resort lodging.</p>","p":729.0000,"hp":"/images/32509fa2-b0d3-4115-af4c-bb7bf400cc3d_epic_pass.png","ha":"Epic Pass","ip":"/images/028352d3-6710-4faf-9b3c-91fe66536d2b_VR_5831_PassMedia175x274_01a-11.gif","ia":"Epic Pass","ur":"http://www.snow.com/epic-pass/passes/epic-pass.aspx?cmpid=SOC02308&INTCMP=SP000025","uo":"http://www.snow.com/epic-pass/passes/epic-pass.aspx?cmpid=SOC02308&INTCMP=SP000041","w":20,"r":[{"w":0,"c":[]}]},{"i":3,"n":"Epic Local","s":"<p>Perfect for Locals who can Navigate a Pass with Restrictions</p>","d":"<p>Unlimited, unrestricted skiing or riding at Breckenridge, Keystone, Afton Alps, Mt. Brighton and Arapahoe Basin with limited restrictions at Canyons, Heavenly, Northstar, and Kirkwood. Also includes a total of 10 days at Vail and Beaver Creek with holiday restrictions. $59 pass holder tickets available for purchase during blackout dates at Heavenly, Northstar and Kirkwood.</p>","p":549.0000,"hp":"/images/bf75efc9-9d13-4a5b-922f-2a22c7e83f72_epic_local_pass.png","ha":"Epic Local","ip":"/images/83915e5d-0fc9-4b80-bc7b-cf98711795cf_VR_5831_PassMedia175x274_01a-6.gif","ia":"Epic Local","ur":"http://www.snow.com/epic-pass/passes/epic-local-pass.aspx?cmpid=SOC02309&INTCMP=SP000026","uo":"http://www.snow.com/epic-pass/passes/epic-local-pass.aspx?cmpid=SOC02309&INTCMP=SP000042","w":30,"r":[{"w":-1000,"c":[{"q":1,"op":"IN","val":"1,2"},{"q":2,"op":"GT","val":"9"}]},{"w":-1000,"c":[{"q":3,"op":"EQ","val":"Yes"},{"q":1,"op":"IN","val":"1,2,6,8"}]},{"w":20,"c":[{"q":3,"op":"EQ","val":"No"},{"q":2,"op":"GT","val":"3"}]},{"w":-1000,"c":[{"q":1,"op":"IN","val":"7,8,9"},{"q":2,"op":"GT","val":"7"}]}]},{"i":4,"n":"Epic 7-Day","s":"<p><strong>PERFECT FOR PEOPLE WHO DON&apos;T PLAN TO SKI MORE THAN 7 DAYS.</strong></p>","d":"<p>A total of 7 unrestricted tickets valid at Vail, Beaver Creek, Breckenridge, Keystone, Canyons, Heavenly, Northstar, Kirkwood, or Arapahoe Basin, plus 7 FREE days at Afton Alps or Mt. Brighton.</p>","p":549.0000,"hp":"/images/4a2b8bfa-eb7a-4fc1-b69e-2a0b292fa791_epic_7-day_pass.png","ha":"Epic 7-Day Pass","ip":"/images/c133f1e7-c4ee-4e89-93a1-e446c73d966e_VR_5831_PassMedia175x274_7Day.png","ia":"Epic 7-Day Pass","ur":"http://www.snow.com/epic-pass/passes/epic-7-day.aspx?cmpid=SOC02310&INTCMP=SP000027","uo":"http://www.snow.com/epic-pass/passes/epic-7-day.aspx?cmpid=SOC02310&INTCMP=SP000043","w":40,"r":[{"w":-1000,"c":[{"q":2,"op":"GT","val":"7"}]},{"w":-1000,"c":[{"q":1,"op":"IN","val":"4,5"},{"q":2,"op":"LT","val":"3"}]},{"w":-1000,"c":[{"q":1,"op":"IN","val":"7,8,9"},{"q":3,"op":"EQ","val":"No"}]}]},{"i":5,"n":"Epic 4-Day","s":"<p>Perfect for people who only plan to take one ski vacation</p>","d":"<p>A total of 4 unrestricted days valid at Vail, Beaver Creek, Breckenridge, Keystone, Canyons, Heavenly, Northstar, Kirkwood and Arapahoe Basin, plus, 4 FREE days at Afton Alps or Mt. Brighton.</p>","p":349.0000,"hp":"/images/bdc08483-f351-4009-9ba4-e1d33bc75b8b_epic_4-day_pass.png","ha":"Epic 4-Day Pass","ip":"/images/3e73c5c4-3607-406d-90d0-e45ae34e1afa_VR_5831_PassMedia175x274_4day.png","ia":"Epic 4","ur":"http://www.snow.com/epic-pass/passes/epic-4-day.aspx?INTCMP=SP000032","uo":"http://www.snow.com/epic-pass/passes/epic-4-day.aspx?INTCMP=SP000048","w":60,"r":[{"w":-1000,"c":[{"q":2,"op":"GT","val":"4"}]}]},{"i":6,"n":"Summit Value","s":"<p>PERFECT FOR PEOPLE WHO ONLY PLAN TO SKI SUMMIT COUNTY</p>","d":"<p>Unlimited skiing or riding at Keystone and Arapahoe Basin with limited restrictions at Breckenridge.</p>","p":469.0000,"hp":"/images/4a1c0908-3989-4bad-a6a7-bb931b05bfde_summit_value_pass.png","ha":"Summit Value Pass","ip":"/images/acc98ec8-21ec-4a42-81bb-08c823fd9b58_VR_5721_EpicPassMedia_summitvalue.jpg","ia":"Summit Value Pass","ur":"http://www.snow.com/epic-pass/passes/summit-value-pass.aspx?cmpid=SOC02311&INTCMP=SP000028","uo":"http://www.snow.com/epic-pass/passes/summit-value-pass.aspx?cmpid=SOC02311&INTCMP=SP000044","w":50,"r":[{"w":-1000,"c":[{"q":1,"op":"IN","val":"1,2,6,7,8,9,10,11,12,13,14"}]},{"w":-1000,"c":[{"q":1,"op":"EQ","val":"3"},{"q":3,"op":"EQ","val":"Yes"}]}]},{"i":7,"n":"Tahoe Local","s":"<p>THE BEST WAY TO ACCESS HEAVENLY, NORTHSTAR AND KIRKWOOD 7 DAYS A WEEK.</p>","d":"<p>Unlimited skiing or riding at Heavenly, Northstar and Kirkwood 7 days a week, with limited holiday restrictions. Saturdays included at all resorts.</p>","p":459.0000,"hp":"/images/85e0b98d-b44f-42a3-9cf4-f5e343d2a9b6_tahoe_local_pass.png","ha":"Tahow Locatl Pass","ip":"/images/aea5e6e8-9ece-4f12-aba9-9161a984d381_VR_5721_EpicPassMedia_TahoeLocal.jpg","ia":"Tahoe Local Pass","ur":"http://www.snow.com/epic-pass/passes/tahoe-local-pass.aspx?cmpid=SOC02313&INTCMP=SP000029","uo":"http://www.snow.com/epic-pass/passes/tahoe-local-pass.aspx?cmpid=SOC02313&INTCMP=SP000045","w":35,"r":[{"w":-1000,"c":[{"q":1,"op":"IN","val":"1,2,3,4,5,6,10,11,12,13,14"}]},{"w":-1000,"c":[{"q":3,"op":"EQ","val":"Yes"},{"q":1,"op":"IN","val":"7,8,9"}]},{"w":-1000,"c":[{"q":1,"op":"IN","val":"7,8,9"},{"q":2,"op":"GT","val":"7"}]}]},{"i":8,"n":"Tahoe Value Pass","s":"<p>SKI OR RIDE 7 DAYS A WEEK AT HEAVENLY AND 6 DAYS A WEEK AT NORTHSTAR AND KIRKWOOD.</p>","d":"<p>Access to Heavenly, Northstar and Kirkwood with limited restrictions. All Saturdays restricted at Northstar and Kirkwood. $59 pass holder tickets available for purchase during blackout dates at Heavenly, Northstar and Kirkwood.</p>","p":409.0000,"hp":"/images/32e8cf47-0f42-4360-97e8-765e5c5a0c3f_tahoe_value_pass.png","ha":"Tahoe Value Pass","ip":"/images/a8c84167-e8bb-4951-b54a-e2399a74bb5f_VR_5721_EpicPassMedia_TahoeValue.jpg","ia":"Tahoe Value Pass","ur":"http://www.snow.com/epic-pass/passes/tahoe-value-pass.aspx?cmpid=SOC02312&INTCMP=SP000030","uo":"http://www.snow.com/epic-pass/passes/tahoe-value-pass.aspx?cmpid=SOC02312&INTCMP=SP000046","w":40,"r":[{"w":-1000,"c":[{"q":1,"op":"IN","val":"1,2,3,4,5,6,10,11,12,13,14"}]},{"w":-1000,"c":[{"q":1,"op":"IN","val":"7,8,9"},{"q":3,"op":"EQ","val":"Yes"}]},{"w":-1000,"c":[{"q":1,"op":"IN","val":"7,8,9"},{"q":2,"op":"GT","val":"7"}]},{"w":-1000,"c":[{"q":1,"op":"IN","val":"7,8"},{"q":4,"op":"EQ","val":"Yes"}]}]},{"i":9,"n":"Kirkwood","s":"<p>Perfect for people who only plan to ski or ride at Kirkwood</p>","d":"<p>Unlimited, unrestricted skiing or riding at Kirkwood. NO BLACKOUT DATES.</p>","p":459.0000,"hp":"/images/eb43f4af-06d9-4442-bff0-e44e582b9043_kirkwood_pass.png","ha":"Kirkwood Pass","ip":"/images/38aa36f7-7a27-4e00-96c4-60fe48a6ed3b_VR_5721_EpicPassMedia_Kirkwood.jpg","ia":"Kirkwood Pass","ur":"http://www.snow.com/epic-pass/passes/kirkwood-pass.aspx?INTCMP=SP000033","uo":"http://www.snow.com/epic-pass/passes/kirkwood-pass.aspx?INTCMP=SP000049","w":30,"r":[{"w":-1000,"c":[{"q":1,"op":"IN","val":"1,2,3,4,5,6,7,8,9,10,11,12,13,14"}]}]},{"i":10,"n":"Keystone A-Basin","s":"<p>The best deal for unlimited skiing and riding in Colorado</p>","d":"<p>Unlimited skiing and riding at Keystone and Arapahoe Basin with limited holiday restrictions.</p>","p":289.0000,"hp":"/images/7e37060c-e7d6-4247-8110-fb19c04face6_keystone_abasin_pass.png","ha":"Keystone A-Basin Pass","ip":"/images/df56b5c6-3eb7-4c00-966f-169536c294b4_VR_5721_EpicPassMedia_KAB.jpg","ia":"Keystone A-Basin Pass","ur":"http://www.snow.com/epic-pass/passes/keystone-abasin-pass.aspx?INTCMP=SP000035","uo":"http://www.snow.com/epic-pass/passes/keystone-abasin-pass.aspx?INTCMP=SP000051","w":63,"r":[{"w":-1000,"c":[{"q":1,"op":"IN","val":"1,2,3,6,7,8,9,10,11,12,13,14"}]},{"w":-1000,"c":[{"q":1,"op":"IN","val":"4,5"},{"q":3,"op":"EQ","val":"Yes"}]},{"w":-1000,"c":[{"q":1,"op":"IN","val":"4,5"},{"q":2,"op":"GT","val":"7"}]}]},{"i":11,"n":"Afton Alps","s":"<p>Perfect for people who only plan to ski or ride at Afton Alps</p>","d":"<p>Unlimited, unrestricted skiing or riding at Afton Alps. NO BLACKOUT DATES.</p>","p":419.0000,"hp":"/images/e13bb1b8-c562-4465-915d-4f6607debe2c_afton_alps_pass.png","ha":"Afton Alps Pass","ip":"/images/8ae3fe7f-9352-40fc-adb4-82608180927d_VR_5721_EpicPassMedia_AA.jpg","ia":"Afton Alps Pass","ur":"http://www.snow.com/epic-pass/passes/aftonalps-pass.aspx?INTCMP=SP000036","uo":"http://www.snow.com/epic-pass/passes/aftonalps-pass.aspx?INTCMP=SP000052","w":50,"r":[{"w":-1000,"c":[{"q":1,"op":"IN","val":"1,2,3,4,5,6,7,8,9,10,12,13,14"}]}]},{"i":12,"n":"Afton Alps College Night","s":"<p>Perfect for College students who only plan to ski or ride at Afton Alps after 3pm.</p>","d":"<p>Unlimited, unrestricted skiing or riding Afton Alps after 3pm. NO BLACKOUT DATES.</p>","p":149.0000,"hp":"/images/c51e356b-5f55-41f7-b37d-494ed456ae28_afton_alps_college_pass.png","ha":"Afton Alps College Night Pass","ip":"/images/462aa364-6515-4369-b29a-5a7528602921_VR_5721_EpicPassMedia_AACollegeNight.jpg","ia":"Afton Alps College Night Pass","ur":"http://www.snow.com/epic-pass/passes/afton-alps-college-night-pass.aspx?INTCMP=SP000037","uo":"http://www.snow.com/epic-pass/passes/afton-alps-college-night-pass.aspx?INTCMP=SP000053","w":10,"r":[{"w":-1000,"c":[{"q":1,"op":"IN","val":"1,2,3,4,5,6,7,8,9,10,12,13,14"}]}]},{"i":13,"n":"Mt. Brighton","s":"<p>Perfect for people who only plan to ski or ride at Mt. Brighton</p>","d":"<p>Unlimited, unrestricted skiing or riding at Mt. Brighton. NO BLACKOUT DATES.</p>","p":419.0000,"hp":"/images/8554b21a-b0b4-4920-b562-573d7f5f9fd2_mt_brighton_pass.png","ha":"Mt. Brighton Pass","ip":"/images/529aa6a8-7403-469f-badd-7b1d3c1faee7_VR_5721_EpicPassMedia_MB.jpg","ia":"Mt. Brighton Pass","ur":"http://www.snow.com/epic-pass/passes/mtbrighton-pass.aspx?INTCMP=SP000038","uo":"http://www.snow.com/epic-pass/passes/mtbrighton-pass.aspx?INTCMP=SP000054","w":50,"r":[{"w":-1000,"c":[{"q":1,"op":"IN","val":"1,2,3,4,5,6,7,8,9,11,12,13,14"}]}]},{"i":14,"n":"Mt. Brighton College Night","s":"<p>Perfect for College students who only plan to ski or ride at Mt. Brighton after 3pm</p>","d":"<p>Unlimited, unrestricted skiing or riding at Mt. Brighton after 3pm. NO BLACKOUT DATES.</p>","p":149.0000,"hp":"/images/45f7bca5-ca31-4edc-8d06-8b5120892eff_mt_brighton_college_pass.png","ha":"Mt. Brighton College Night Pass","ip":"/images/acdcf055-87c2-438a-8dfc-b3584de14d6d_VR_5721_EpicPassMedia_MBCollegeNight.jpg","ia":"Mt. Brighton College Night Pass","ur":"http://www.snow.com/epic-pass/passes/mt-brighton-college-night-pass.aspx?INTCMP=SP000039","uo":"http://www.snow.com/epic-pass/passes/mt-brighton-college-night-pass.aspx?INTCMP=SP000055","w":10,"r":[{"w":-1000,"c":[{"q":1,"op":"IN","val":"1,2,3,4,5,6,7,8,9,11,12,13,14"}]}]},{"i":15,"n":"Canyons Youth","s":"<p>Perfect for Utah&rsquo;s Youth and College students who only plan to ski or ride at Canyons</p>","d":"<p>Utah Resident Youth and College Students Only: Unlimited, unrestricted skiing or riding at Canyons. NO BLACKOUT DATES.</p>","p":399.0000,"hp":"/images/6e20dc76-a913-4638-94c1-9409f04108e3_canyons_youth_pass.png","ha":"Canyons Youth Pass","ip":"/images/644aceda-815d-457e-aad9-9d8ad63ea32d_VR_5721_EpicPassMedia_CanyonsYouth.jpg","ia":"Canyons Youth Pass","ur":"http://www.snow.com/epic-pass/passes/canyons-youth-pass.aspx?INTCMP=SP000040","uo":"http://www.snow.com/epic-pass/passes/canyons-youth-pass.aspx?INTCMP=SP000056","w":10,"r":[{"w":-1000,"c":[{"q":1,"op":"IN","val":"1,2,3,4,5,7,8,9,10,11,12,13,14"}]}]}]';
+        var q = '[{"i":1,"t":"Selected Resorts","k":"L","p":"PassFinder:Widget:Add_Resorts"},{"i":2,"t":"How many total days do you plan to ski across all resorts this season?","k":"N","p":"PassFinder:Widget:Total_Days"},{"i":3,"t":"Ski or ride during peak holiday periods?*","k":"Y","p":"PassFinder:Widget:Peak"},{"i":4,"t":"Visit Northstar or Kirkwood on Saturdays?","k":"Y","p":"PassFinder:Widget:Saturdays"},{"i":5,"t":"Ski 10+ days at Vail or Beaver Creek?","k":"Y","p":"PassFinder:Widget:10plus_Days"}]';
+        var heroImageSrc        = 'http://passfinder.factionmedia.net/images/97043e4a-b76e-45e0-8c47-6d5d26ff27fb_hero.png';
+        var heroImageAlt        = 'Find the perfect pass to make your season epic';
+        var placeholderImageSrc = 'http://passfinder.factionmedia.net/images/679d5f3b-86cd-471e-bfff-67243301ad56_placeholder.jpg';
+        var placeholderImageAlt = '';
+        var seasonalText        = '* Peak Holiday Periods include: 11/28 - 11/29/14, 12/26 - 12/31/14, 1/17/15, 2/14 - 2/15/15. Please read full pass details to learn more about blackout dates that may apply to certain passes.';
+    </script>
+
+
+
+    <!-- SiteCatalyst code version: H.16. Copyright 1997-2008 Omniture, Inc. More info available at http://www.omniture.com -->
+    <script src="https://www.snow.com/vailresorts/sites/global/assets/js/tagging/s_code.js"></script>
+    <script>//<![CDATA[
+     s.pageName="snow:epic-pass:Pass Finder:iframe";
+     s.prop50 = "vriepicpass"; //Omniture Report Suite ID
+     s.linkTrackVars = 'prop50';
+    jQuery(window).load( function() { s.t(); } )
+    //]]></script>
+</body>
+</html>
